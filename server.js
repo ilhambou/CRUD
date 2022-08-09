@@ -22,19 +22,6 @@ app.set("view engine","ejs")
 app.use('/css',express.static(path.resolve(__dirname,'assets/css')))
 app.use('/js',express.static(path.resolve(__dirname,'assets/js')))
 
-
-app.get('/',(req,res)=>{
-    // res.send('crud app'); //return text
-    res.render('index');
-})
-
-app.get('/add-user',(req,res)=>{
-    // res.send('crud app'); //return text
-    res.render('add_user');
-})
-app.get('/update-user',(req,res)=>{
-    // res.send('crud app'); //return text
-    res.render('update_user');
-})
+app.use('/',require('./server/routes/router'))
 
 app.listen(PORT,()=>{console.log(`Server is running on http://localhost:${PORT}`)});
